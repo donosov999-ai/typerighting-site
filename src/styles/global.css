@@ -262,3 +262,15 @@ section { position: relative; overflow: hidden; }
 .demo-stat { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .demo-go { font-size: 14px; font-weight: 500; color: var(--accent); }
 .demo-go:hover { text-decoration: underline; }
+
+/* воронка: результат демо → регистрация */
+.demo-result { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); animation: fadeup .45s ease; }
+@keyframes fadeup { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.demo-wpm { font-size: 24px; font-weight: 600; letter-spacing: -.4px; }
+.demo-wpm b { color: var(--accent); font-size: 34px; }
+.demo-savet { color: var(--muted); margin: 8px 0 16px; font-size: 16px; }
+.demo-reg { display: flex; gap: 10px; flex-wrap: wrap; align-items: stretch; }
+.demo-reg .demo-input { flex: 1; min-width: 130px; margin: 0; }
+.demo-reg .btn { white-space: nowrap; font-size: 16px; padding: 13px 24px; }
+.demo-regmsg { margin-top: 12px; font-size: 14px; color: var(--accent); min-height: 1.2em; }
+.demo-regmsg a { font-weight: 600; }

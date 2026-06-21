@@ -39,10 +39,21 @@ const delay = (i: number) => `reveal d${Math.min(i, 5)}`;
   <div class="blobs"><span class="blob b3"></span></div>
   <div class="wrap">
     <div class="sec-head reveal"><h2>{t('demo.title')}</h2><p>{t('demo.sub')}</p></div>
-    <div class="demo reveal d1">
+    <div class="demo reveal d1" id="demoBox"
+      data-save={t('demo.save')} data-ok={t('demo.ok')} data-taken={t('demo.taken')} data-short={t('demo.short')} data-net={t('demo.net')} data-app={appUrl} data-openapp={t('demo.openapp')}>
       <div class="demo-sample" id="demoSample" data-text={t('demo.sample')}></div>
       <input class="demo-input" id="demoInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder={t('demo.ph')} aria-label={t('demo.ph')} />
       <div class="demo-bar"><span id="demoStat" class="demo-stat"></span><a class="demo-go" href={appUrl}>{t('demo.full')} →</a></div>
+      <div class="demo-result" id="demoResult" hidden>
+        <div class="demo-wpm"><b id="demoWpm">0</b> WPM · <span id="demoAcc">100%</span></div>
+        <p class="demo-savet" id="demoSaveT"></p>
+        <div class="demo-reg">
+          <input id="regNick" class="demo-input" maxlength="24" autocomplete="off" placeholder={t('demo.nick')} aria-label={t('demo.nick')} />
+          <input id="regPin" class="demo-input" type="password" inputmode="numeric" maxlength="12" placeholder="PIN" aria-label="PIN" />
+          <button id="regBtn" class="btn btn-primary">{t('demo.create')}</button>
+        </div>
+        <p class="demo-regmsg" id="regMsg"></p>
+      </div>
     </div>
   </div>
 </section>
@@ -122,14 +133,17 @@ const delay = (i: number) => `reveal d${Math.min(i, 5)}`;
   }, { threshold: 0.6 });
   document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => countIO.observe(el));
 
-  // Живая мини-демо печати
+  // Живая мини-демо печати + воронка в аккаунт
   const sampleEl = document.getElementById('demoSample');
   const inputEl = document.getElementById('demoInput') as HTMLInputElement | null;
   const statEl = document.getElementById('demoStat');
-  if (sampleEl && inputEl && statEl) {
+  const box = document.getElementById('demoBox') as HTMLElement | null;
+  if (sampleEl && inputEl && statEl && box) {
     const text = sampleEl.dataset.text || '';
+    let startedAt = 0, finished = false;
     const paint = () => {
       const val = inputEl.value;
+      if (!startedAt && val.length) startedAt = Date.now();
       let html = '', ok = 0;
       for (let i = 0; i < text.length; i++) {
         const c = text[i];
@@ -146,9 +160,52 @@ const delay = (i: number) => `reveal d${Math.min(i, 5)}`;
       sampleEl.innerHTML = html;
       const acc = val.length ? Math.round((ok / val.length) * 100) : 100;
       statEl.textContent = `${val.length}/${text.length} · ${acc}%`;
-      if (val.length >= text.length) statEl.textContent += ' ✓';
+      if (val.length >= text.length && !finished) {
+        finished = true;
+        const mins = startedAt ? (Date.now() - startedAt) / 60000 : 0;
+        const wpm = mins > 0 ? Math.round((text.length / 5) / mins) : 0;
+        const res = document.getElementById('demoResult');
+        const wEl = document.getElementById('demoWpm');
+        const aEl = document.getElementById('demoAcc');
+        const sEl = document.getElementById('demoSaveT');
+        if (res && wEl && aEl && sEl) {
+          wEl.textContent = String(wpm); aEl.textContent = acc + '%';
+          sEl.textContent = box.dataset.save || '';
+          res.hidden = false;
+          res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
     };
     inputEl.addEventListener('input', paint);
     paint();
+
+    // регистрация прямо на сайте → тот же Supabase RPC, что и приложение
+    const regBtn = document.getElementById('regBtn') as HTMLButtonElement | null;
+    const regMsg = document.getElementById('regMsg');
+    regBtn?.addEventListener('click', async () => {
+      const nick = (document.getElementById('regNick') as HTMLInputElement).value.trim();
+      const pin = (document.getElementById('regPin') as HTMLInputElement).value;
+      if (!regMsg) return;
+      if (nick.length < 2 || pin.length < 4) { regMsg.textContent = box.dataset.short || ''; return; }
+      regBtn.disabled = true; regMsg.textContent = '…';
+      const K = 'sb_publishable_A2vJ5DjemTZIKrKX6XGqvQ_WaiuAkk1';
+      try {
+        const r = await fetch('https://iuvvheeocobhiothfgei.supabase.co/rest/v1/rpc/tr_register', {
+          method: 'POST',
+          headers: { apikey: K, Authorization: 'Bearer ' + K, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ p_nick: nick, p_pin: pin }),
+        });
+        const data = await r.json();
+        if (data && data.ok) {
+          regMsg.innerHTML = `${box.dataset.ok || ''} <a href="${box.dataset.app}" class="demo-go">${box.dataset.openapp || ''}</a>`;
+          const reg = document.querySelector('.demo-reg') as HTMLElement | null;
+          if (reg) reg.style.display = 'none';
+        } else if (data && data.err === 'nick_taken') {
+          regMsg.textContent = box.dataset.taken || ''; regBtn.disabled = false;
+        } else {
+          regMsg.textContent = box.dataset.short || ''; regBtn.disabled = false;
+        }
+      } catch { regMsg.textContent = box.dataset.net || ''; regBtn.disabled = false; }
+    });
   }
 </script>

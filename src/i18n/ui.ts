@@ -50,6 +50,11 @@ const en: Dict = {
   'foot.author': 'By',
   'demo.title': 'Try it right here', 'demo.sub': 'Type the line below — feel how it works, no install',
   'demo.ph': 'Start typing here…', 'demo.full': 'Open the full trainer',
+  'demo.save': 'Save your progress and join the ranking', 'demo.nick': 'Nick',
+  'demo.create': 'Create account', 'demo.openapp': 'Open trainer →',
+  'demo.ok': 'Account created! Open the trainer and sign in with your nick.',
+  'demo.taken': 'This nick is taken — try another', 'demo.short': 'Nick ≥ 2 chars, PIN ≥ 4 digits',
+  'demo.net': 'Network error, try again',
 };
 
 const ru: Dict = {
@@ -90,6 +95,11 @@ const ru: Dict = {
   'foot.author': 'Автор:',
   'demo.title': 'Попробуй прямо здесь', 'demo.sub': 'Напечатай строку ниже — почувствуй, как это, без установки',
   'demo.ph': 'Печатай здесь…', 'demo.full': 'Открыть весь тренажёр',
+  'demo.save': 'Сохрани прогресс и попади в рейтинг', 'demo.nick': 'Ник',
+  'demo.create': 'Создать аккаунт', 'demo.openapp': 'Открыть тренажёр →',
+  'demo.ok': 'Аккаунт создан! Открой тренажёр и войди своим ником.',
+  'demo.taken': 'Этот ник занят — попробуй другой', 'demo.short': 'Ник ≥ 2 символа, PIN ≥ 4 цифры',
+  'demo.net': 'Ошибка сети, попробуй ещё раз',
 };
 
 // Видимое «лицо» на остальных 5 языках (детали фич падают на EN через useTranslations).
