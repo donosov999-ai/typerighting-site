@@ -1,0 +1,51 @@
+---
+import type { CompetitorPage } from '../data/competitors';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const { page, lang } = Astro.props as { page: CompetitorPage; lang: Lang };
+const t = useTranslations(lang);
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+// JSON-LD ItemList — конкуренты как ранжированный список для поиска
+const itemLd = {
+  '@context': 'https://schema.org', '@type': 'ItemList',
+  itemListElement: page.competitors.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name })),
+};
+const vsParas = page.comparison.body.split('\n').map((s) => s.trim()).filter(Boolean);
+---
+<article class="comp">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <header class="comp-head">
+      <h1>{page.title}</h1>
+      <p class="lead">{page.lead}</p>
+      <a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a>
+    </header>
+
+    <div class="comp-body">
+      <p class="comp-intro">{page.intro}</p>
+
+      <ol class="comp-list">
+        {page.competitors.map((c, i) => (
+          <li class="comp-card">
+            <span class="comp-num">{i + 1}</span>
+            <div class="comp-c"><h2>{c.name}</h2><p>{c.note}</p></div>
+          </li>
+        ))}
+      </ol>
+
+      <section class="comp-vs">
+        <h2>{page.comparison.h}</h2>
+        {vsParas.map((p) => <p>{p}</p>)}
+      </section>
+
+      <section class="comp-verdict">
+        <p>{page.verdict}</p>
+      </section>
+
+      <div class="center" style="margin-top:32px"><a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a></div>
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json" set:html={JSON.stringify(itemLd)} />

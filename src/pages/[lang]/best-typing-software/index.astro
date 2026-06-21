@@ -1,0 +1,15 @@
+---
+import Base from '../../../layouts/Base.astro';
+import CompetitorsPage from '../../../components/CompetitorsPage.astro';
+import { COMPETITORS, COMP_LANGS } from '../../../data/competitors';
+import type { Lang } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return COMP_LANGS.map((lang) => ({ params: { lang }, props: { page: COMPETITORS[lang] } }));
+}
+const { lang } = Astro.params as { lang: Lang };
+const { page } = Astro.props;
+---
+<Base lang={lang} metaTitle={page.metaTitle} metaDesc={page.metaDesc}>
+  <CompetitorsPage page={page} lang={lang} />
+</Base>

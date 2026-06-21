@@ -12,6 +12,10 @@ const site = (Astro.site?.toString() ?? '').replace(/\/$/, '');
 // Приложение (тренажёр) — отдельная Vite-сборка. Пока ведёт на текущую веб-версию;
 // после переноса приложения в /app/ этого же домена — поменять на '/app/'.
 const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+// Метка пункта меню «Сравнение» (страницы конкурентов /best-typing-software/)
+const compNav: Record<Lang, string> = {
+  en: 'Compare', ru: 'Сравнение', es: 'Comparativa', de: 'Vergleich', fr: 'Comparatif', it: 'Confronto', pt: 'Comparativo',
+};
 ---
 <!doctype html>
 <html lang={lang}>
@@ -37,6 +41,7 @@ const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
     <div class="nav-right">
       <a class="nav-link" href={localizedPath(lang, 'learn')}>{t('learn.nav')}</a>
       <a class="nav-link" href={localizedPath(lang, 'rating')}>{t('rating.nav')}</a>
+      <a class="nav-link" href={localizedPath(lang, 'best-typing-software')}>{compNav[lang]}</a>
       <select class="langsel" aria-label="Language" onchange="location.href=this.value">
         {locales.map((l) => <option value={localizedPath(l)} selected={l === lang}>{langFlag[l]} {languages[l]}</option>)}
       </select>

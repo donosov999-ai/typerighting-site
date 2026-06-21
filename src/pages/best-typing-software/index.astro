@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import CompetitorsPage from '../../components/CompetitorsPage.astro';
+import { COMPETITORS } from '../../data/competitors';
+const page = COMPETITORS.en;
+---
+<Base lang="en" metaTitle={page.metaTitle} metaDesc={page.metaDesc}>
+  <CompetitorsPage page={page} lang="en" />
+</Base>
