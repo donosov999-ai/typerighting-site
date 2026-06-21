@@ -1,0 +1,234 @@
+// Контент промо-сайта на 7 языках. EN+RU полные; ES/DE/FR/IT/PT — видимое «лицо»
+// (nav/hero/секции/скачать/футер) переведено, детали фич падают на EN через useTranslations.
+export const defaultLang = 'en' as const;
+export type Lang = 'en' | 'ru' | 'es' | 'de' | 'fr' | 'it' | 'pt';
+
+export const languages: Record<Lang, string> = {
+  en: 'English', ru: 'Русский', es: 'Español', de: 'Deutsch', fr: 'Français', it: 'Italiano', pt: 'Português',
+};
+export const langFlag: Record<Lang, string> = {
+  en: '🇬🇧', ru: '🇷🇺', es: '🇪🇸', de: '🇩🇪', fr: '🇫🇷', it: '🇮🇹', pt: '🇵🇹',
+};
+
+type Dict = Record<string, string>;
+
+const en: Dict = {
+  'meta.title': 'TypeRIGHTing — free touch-typing trainer in 7 languages',
+  'meta.desc': 'Free touch-typing trainer in 7 languages: structured course from zero, AI training on your weak keys, competition with live ranking, speed test with certificate, literature (Poe, Pushkin, Shakespeare, Dante). Offline on Windows, macOS, Linux and in the browser.',
+  'nav.cta': 'Open trainer',
+  'hero.badge': 'Free · Offline · 7 languages',
+  'hero.h1a': 'Learn to type ',
+  'hero.h1grad': 'touch',
+  'hero.h1b': ' — in 7 languages',
+  'hero.lead': 'A structured course from scratch, AI that finds your weak keys, competition with a live leaderboard and a speed test with a certificate. Interface and exercises in seven languages — the app detects your system language. Works in the browser and offline.',
+  'hero.cta1': 'Open in browser',
+  'hero.cta2': 'Download for desktop',
+  'stat.langs': 'languages', 'stat.ex': 'exercises', 'stat.modes': 'modes',
+  'stat.rank': 'live ranking', 'stat.free': 'forever',
+  'hero.cap': 'The finger moves to the key along an arc — the whole hand rolls, not just the finger',
+  'move.h2': 'Right motion, not pecking',
+  'move.p': 'Each finger reaches its key along an arc from the home row, rolling the wrist. That is exactly what the trainer builds.',
+  'move.cap': 'The original trainer’s diagram — an arc from the home row (ASDF) to every key: which finger goes where and how',
+  'feat.h2': 'What’s inside',
+  'feat.p': 'From the first keystroke to fluent typing of complex literary texts',
+  'f1.t': 'Seven languages', 'f1.d': 'Interface and exercises in English, Russian, Spanish, German, French, Italian and Portuguese. The language is detected from your system automatically.',
+  'f2.t': 'Interactive keyboard', 'f2.d': 'Highlights the next key, the right Shift, finger zones and the motion arc from the home row. National layouts: QWERTY, AZERTY, QWERTZ.',
+  'f3.t': 'Course from zero', 'f3.d': 'Lessons that build up: from the home row (fj dk sl) to capitals, digits, symbols and full sentences. A map with locks and stars for accuracy.',
+  'f4.t': 'AI training', 'f4.d': 'Generates coherent words saturated with exactly the letters you struggle with. Metrics: Mastery, Pace and Rhythm of your keystrokes.',
+  'f5.t': 'Weak keys + heat map', 'f5.d': 'The app finds your problem keys from error stats, colors them on the diagram and drills exactly those.',
+  'f6.t': 'Competition & ranking', 'f6.d': 'Five disciplines — alphabet, words, digits, sprint — with medals and a real-time leaderboard.',
+  'f7.t': 'Speed test + certificate', 'f7.d': 'A 1, 5 or 10-minute timer, a Net WPM goal, honest Gross/Net and accuracy. A PNG certificate with your name at the end.',
+  'f8.t': 'Literature in 7 languages', 'f8.d': 'Two text banks: Poe’s “The Raven” in every language and “Classics” — Pushkin, Shakespeare, Cervantes, Kafka, Proust, Dante, Machado de Assis.',
+  'prof.h2': 'Three editions in one', 'prof.p': 'Pick a look that fits you — settings, progress and language are saved',
+  'prof.m.t': 'Classic', 'prof.m.d': 'A light, focused theme built around speed, records and competition. Light and dark modes.',
+  'prof.f.t': 'Soft', 'prof.f.d': 'A warm, light palette and a calm pace without the pressure of a stopwatch.',
+  'prof.kids.t': 'Kids', 'prof.kids.d': 'A game with levels, stars and a helpful cat. Accuracy matters more than speed.',
+  'dl.h2': 'Download TypeRIGHTing', 'dl.p': 'Free · no ads · ~2 MB',
+  'dl.browser': 'In browser',
+  'dl.note': 'The fastest way to try it is to open it in the browser — nothing to install. Works offline on Windows, macOS and Linux.',
+  'foot.made': 'Built on the classic TypeRIGHTing trainer — rewritten from .NET to modern web + desktop.',
+  'foot.author': 'By',
+  'demo.title': 'Try it right here', 'demo.sub': 'Type the line below — feel how it works, no install',
+  'demo.ph': 'Start typing here…', 'demo.full': 'Open the full trainer',
+};
+
+const ru: Dict = {
+  'meta.title': 'TypeRIGHTing — бесплатный тренажёр слепой печати на 7 языках',
+  'meta.desc': 'Бесплатный тренажёр слепой печати на 7 языках: структурированный курс с нуля, AI-обучение по слабым клавишам, соревнование с онлайн-рейтингом, тест скорости с сертификатом, литература (По, Пушкин, Шекспир, Данте). Офлайн на Windows, macOS, Linux и в браузере.',
+  'nav.cta': 'Открыть тренажёр',
+  'hero.badge': 'Бесплатно · Офлайн · 7 языков',
+  'hero.h1a': 'Научись печатать ',
+  'hero.h1grad': 'вслепую',
+  'hero.h1b': ' — на 7 языках',
+  'hero.lead': 'Структурированный курс с нуля, AI-обучение, которое находит твои слабые клавиши, соревнование с онлайн-рейтингом и тест скорости с сертификатом. Интерфейс и упражнения на семи языках — программа сама определяет язык системы. Работает в браузере и офлайн.',
+  'hero.cta1': 'Открыть в браузере',
+  'hero.cta2': 'Скачать на компьютер',
+  'stat.langs': 'языков', 'stat.ex': 'упражнений', 'stat.modes': 'режимов',
+  'stat.rank': 'онлайн-рейтинг', 'stat.free': 'навсегда',
+  'hero.cap': 'Палец идёт к клавише дугой — с подворотом кисти, движется не только палец, но и вся кисть',
+  'move.h2': 'Правильное движение, а не тычки',
+  'move.p': 'Каждый палец идёт к своей клавише по дуге от домашнего ряда — с подворотом кисти. Это и ставит тренажёр.',
+  'move.cap': 'Та самая схема из оригинального тренажёра — дуга от домашнего ряда (ФЫВА / ASDF) к каждой клавише: какой палец куда и как движется',
+  'feat.h2': 'Что внутри',
+  'feat.p': 'От первого нажатия до беглого набора сложных литературных текстов',
+  'f1.t': 'Семь языков', 'f1.d': 'Интерфейс и упражнения на русском, английском, испанском, немецком, французском, итальянском и португальском. Язык определяется по системе автоматически.',
+  'f2.t': 'Интерактивная клавиатура', 'f2.d': 'Подсвечивает следующую клавишу, нужный Shift, зоны пальцев и стрелку движения от домашнего ряда. Нац. раскладки: QWERTY, AZERTY, QWERTZ.',
+  'f3.t': 'Курс с нуля', 'f3.d': 'Уроки по нарастающей: от домашнего ряда (fj dk sl) до заглавных, цифр, знаков и целых предложений. Карта с замками и звёздами за точность.',
+  'f4.t': 'AI-обучение', 'f4.d': 'Генерирует связные слова, насыщенные именно теми буквами, что даются хуже всего. Метрики: Мастерство, Темп и Ритмичность нажатий.',
+  'f5.t': 'Слабые клавиши + карта тепла', 'f5.d': 'Программа сама находит проблемные клавиши по статистике ошибок, раскрашивает их на схеме и даёт прицельную тренировку.',
+  'f6.t': 'Соревнование и рейтинг', 'f6.d': 'Пять дисциплин — алфавит, слова, цифры, спринт — с медалями и таблицей лучших результатов в реальном времени.',
+  'f7.t': 'Тест скорости + сертификат', 'f7.d': 'Таймер на 1, 5 или 10 минут, цель по Net WPM, честный подсчёт Gross/Net и точности. В конце — PNG-сертификат с именем.',
+  'f8.t': 'Литература на 7 языках', 'f8.d': 'Два банка текстов: «Ворон» Эдгара По на всех языках и «Классика» — Пушкин, Шекспир, Сервантес, Кафка, Пруст, Данте, Машаду де Ассис.',
+  'prof.h2': 'Три версии в одном', 'prof.p': 'Выбери оформление под себя — настройки, прогресс и язык сохраняются',
+  'prof.m.t': 'Классический', 'prof.m.d': 'Светлая деловая тема, акцент на скорости, рекордах и соревновании. Светлая и тёмная темы.',
+  'prof.f.t': 'Мягкий', 'prof.f.d': 'Тёплая светлая палитра и спокойный темп без давления секундомера.',
+  'prof.kids.t': 'Детский', 'prof.kids.d': 'Игра с уровнями, звёздами и котиком-помощником. Точность важнее скорости.',
+  'dl.h2': 'Скачать TypeRIGHTing', 'dl.p': 'Бесплатно · без рекламы · ~2 МБ',
+  'dl.browser': 'В браузере',
+  'dl.note': 'Самый быстрый способ попробовать — открыть в браузере, ничего устанавливать не нужно. Работает офлайн на Windows, macOS и Linux.',
+  'foot.made': 'Сделано на базе классического тренажёра TypeRIGHTing — переписан с .NET на современный веб + desktop.',
+  'foot.author': 'Автор:',
+  'demo.title': 'Попробуй прямо здесь', 'demo.sub': 'Напечатай строку ниже — почувствуй, как это, без установки',
+  'demo.ph': 'Печатай здесь…', 'demo.full': 'Открыть весь тренажёр',
+};
+
+// Видимое «лицо» на остальных 5 языках (детали фич падают на EN через useTranslations).
+const es: Dict = {
+  'meta.title': 'TypeRIGHTing — mecanografía gratis en 7 idiomas',
+  'meta.desc': 'Entrenador de mecanografía gratis en 7 idiomas: curso desde cero, entrenamiento con IA en tus teclas débiles, competición con ranking en vivo, test de velocidad con certificado y literatura. Sin conexión en Windows, macOS, Linux y en el navegador.',
+  'nav.cta': 'Abrir entrenador', 'hero.badge': 'Gratis · Sin conexión · 7 idiomas',
+  'hero.h1a': 'Aprende a escribir ', 'hero.h1grad': 'al tacto', 'hero.h1b': ' — en 7 idiomas',
+  'hero.lead': 'Un curso estructurado desde cero, una IA que encuentra tus teclas débiles, competición con ranking en vivo y un test de velocidad con certificado. Interfaz y ejercicios en siete idiomas. Funciona en el navegador y sin conexión.',
+  'hero.cta1': 'Abrir en el navegador', 'hero.cta2': 'Descargar para escritorio',
+  'stat.langs': 'idiomas', 'stat.ex': 'ejercicios', 'stat.modes': 'modos', 'stat.rank': 'ranking en vivo', 'stat.free': 'para siempre',
+  'feat.h2': 'Qué incluye', 'feat.p': 'Desde la primera tecla hasta escribir con fluidez textos literarios complejos',
+  'prof.h2': 'Tres ediciones en una', 'prof.p': 'Elige el estilo que te quede — ajustes, progreso e idioma se guardan',
+  'dl.h2': 'Descargar TypeRIGHTing', 'dl.p': 'Gratis · sin anuncios · ~2 MB', 'dl.browser': 'En el navegador',
+  'dl.note': 'La forma más rápida de probarlo es abrirlo en el navegador, sin instalar nada. Funciona sin conexión en Windows, macOS y Linux.',
+  'foot.made': 'Basado en el clásico TypeRIGHTing — reescrito de .NET a web + escritorio modernos.', 'foot.author': 'Por',
+};
+const de: Dict = {
+  'meta.title': 'TypeRIGHTing — kostenloser Schreibtrainer in 7 Sprachen',
+  'meta.desc': 'Kostenloser 10-Finger-Schreibtrainer in 7 Sprachen: Kurs von Grund auf, KI-Training für schwache Tasten, Wettbewerb mit Live-Rangliste, Tempotest mit Zertifikat und Literatur. Offline unter Windows, macOS, Linux und im Browser.',
+  'nav.cta': 'Trainer öffnen', 'hero.badge': 'Kostenlos · Offline · 7 Sprachen',
+  'hero.h1a': 'Lerne das ', 'hero.h1grad': 'blinde', 'hero.h1b': ' Tippen — in 7 Sprachen',
+  'hero.lead': 'Ein strukturierter Kurs von Grund auf, eine KI, die deine schwachen Tasten findet, Wettbewerb mit Live-Rangliste und ein Tempotest mit Zertifikat. Oberfläche und Übungen in sieben Sprachen. Läuft im Browser und offline.',
+  'hero.cta1': 'Im Browser öffnen', 'hero.cta2': 'Für Desktop herunterladen',
+  'stat.langs': 'Sprachen', 'stat.ex': 'Übungen', 'stat.modes': 'Modi', 'stat.rank': 'Live-Rangliste', 'stat.free': 'für immer',
+  'feat.h2': 'Was drin ist', 'feat.p': 'Vom ersten Anschlag bis zum flüssigen Tippen komplexer literarischer Texte',
+  'prof.h2': 'Drei Editionen in einem', 'prof.p': 'Wähle den Look, der zu dir passt — Einstellungen, Fortschritt und Sprache werden gespeichert',
+  'dl.h2': 'TypeRIGHTing herunterladen', 'dl.p': 'Kostenlos · werbefrei · ~2 MB', 'dl.browser': 'Im Browser',
+  'dl.note': 'Am schnellsten testest du es im Browser — nichts zu installieren. Läuft offline unter Windows, macOS und Linux.',
+  'foot.made': 'Basiert auf dem klassischen TypeRIGHTing — von .NET auf modernes Web + Desktop umgeschrieben.', 'foot.author': 'Von',
+};
+const fr: Dict = {
+  'meta.title': 'TypeRIGHTing — logiciel de dactylographie gratuit en 7 langues',
+  'meta.desc': 'Entraîneur de dactylographie gratuit en 7 langues : cours depuis zéro, entraînement IA sur vos touches faibles, compétition avec classement en direct, test de vitesse avec certificat et littérature. Hors ligne sur Windows, macOS, Linux et dans le navigateur.',
+  'nav.cta': 'Ouvrir l’entraîneur', 'hero.badge': 'Gratuit · Hors ligne · 7 langues',
+  'hero.h1a': 'Apprends à taper ', 'hero.h1grad': 'au clavier', 'hero.h1b': ' — en 7 langues',
+  'hero.lead': 'Un cours structuré depuis zéro, une IA qui trouve tes touches faibles, une compétition avec classement en direct et un test de vitesse avec certificat. Interface et exercices en sept langues. Fonctionne dans le navigateur et hors ligne.',
+  'hero.cta1': 'Ouvrir dans le navigateur', 'hero.cta2': 'Télécharger pour ordinateur',
+  'stat.langs': 'langues', 'stat.ex': 'exercices', 'stat.modes': 'modes', 'stat.rank': 'classement en direct', 'stat.free': 'pour toujours',
+  'feat.h2': 'Ce qu’il contient', 'feat.p': 'De la première frappe à la saisie fluide de textes littéraires complexes',
+  'prof.h2': 'Trois éditions en une', 'prof.p': 'Choisis le style qui te convient — réglages, progression et langue sont sauvegardés',
+  'dl.h2': 'Télécharger TypeRIGHTing', 'dl.p': 'Gratuit · sans pub · ~2 Mo', 'dl.browser': 'Dans le navigateur',
+  'dl.note': 'Le plus rapide pour l’essayer est de l’ouvrir dans le navigateur, rien à installer. Fonctionne hors ligne sur Windows, macOS et Linux.',
+  'foot.made': 'Basé sur le classique TypeRIGHTing — réécrit de .NET vers un web + desktop modernes.', 'foot.author': 'Par',
+};
+const it: Dict = {
+  'meta.title': 'TypeRIGHTing — corso di dattilografia gratis in 7 lingue',
+  'meta.desc': 'Trainer di dattilografia gratis in 7 lingue: corso da zero, allenamento IA sui tasti deboli, competizione con classifica in tempo reale, test di velocità con certificato e letteratura. Offline su Windows, macOS, Linux e nel browser.',
+  'nav.cta': 'Apri il trainer', 'hero.badge': 'Gratis · Offline · 7 lingue',
+  'hero.h1a': 'Impara a scrivere ', 'hero.h1grad': 'alla cieca', 'hero.h1b': ' — in 7 lingue',
+  'hero.lead': 'Un corso strutturato da zero, un’IA che trova i tuoi tasti deboli, competizione con classifica in tempo reale e un test di velocità con certificato. Interfaccia ed esercizi in sette lingue. Funziona nel browser e offline.',
+  'hero.cta1': 'Apri nel browser', 'hero.cta2': 'Scarica per desktop',
+  'stat.langs': 'lingue', 'stat.ex': 'esercizi', 'stat.modes': 'modalità', 'stat.rank': 'classifica live', 'stat.free': 'per sempre',
+  'feat.h2': 'Cosa contiene', 'feat.p': 'Dal primo tasto alla digitazione fluente di testi letterari complessi',
+  'prof.h2': 'Tre edizioni in una', 'prof.p': 'Scegli lo stile che fa per te — impostazioni, progressi e lingua vengono salvati',
+  'dl.h2': 'Scarica TypeRIGHTing', 'dl.p': 'Gratis · senza pubblicità · ~2 MB', 'dl.browser': 'Nel browser',
+  'dl.note': 'Il modo più rapido per provarlo è aprirlo nel browser, niente da installare. Funziona offline su Windows, macOS e Linux.',
+  'foot.made': 'Basato sul classico TypeRIGHTing — riscritto da .NET a web + desktop moderni.', 'foot.author': 'Di',
+};
+const pt: Dict = {
+  'meta.title': 'TypeRIGHTing — curso de digitação grátis em 7 idiomas',
+  'meta.desc': 'Treinador de digitação grátis em 7 idiomas: curso do zero, treino com IA nas teclas fracas, competição com ranking ao vivo, teste de velocidade com certificado e literatura. Offline no Windows, macOS, Linux e no navegador.',
+  'nav.cta': 'Abrir treinador', 'hero.badge': 'Grátis · Offline · 7 idiomas',
+  'hero.h1a': 'Aprende a escrever ', 'hero.h1grad': 'às cegas', 'hero.h1b': ' — em 7 idiomas',
+  'hero.lead': 'Um curso estruturado do zero, uma IA que encontra as tuas teclas fracas, competição com ranking ao vivo e um teste de velocidade com certificado. Interface e exercícios em sete idiomas. Funciona no navegador e offline.',
+  'hero.cta1': 'Abrir no navegador', 'hero.cta2': 'Descarregar para desktop',
+  'stat.langs': 'idiomas', 'stat.ex': 'exercícios', 'stat.modes': 'modos', 'stat.rank': 'ranking ao vivo', 'stat.free': 'para sempre',
+  'feat.h2': 'O que inclui', 'feat.p': 'Da primeira tecla à digitação fluente de textos literários complexos',
+  'prof.h2': 'Três edições numa só', 'prof.p': 'Escolhe o estilo que combina contigo — definições, progresso e idioma são guardados',
+  'dl.h2': 'Descarregar TypeRIGHTing', 'dl.p': 'Grátis · sem anúncios · ~2 MB', 'dl.browser': 'No navegador',
+  'dl.note': 'A forma mais rápida de experimentar é abrir no navegador, sem instalar nada. Funciona offline no Windows, macOS e Linux.',
+  'foot.made': 'Baseado no clássico TypeRIGHTing — reescrito de .NET para web + desktop modernos.', 'foot.author': 'Por',
+};
+
+// Демо-строка для живого мини-теста печати — панграмма на каждом языке (ASCII для нац. раскладок).
+const demoSamples: Record<Lang, string> = {
+  en: 'the quick brown fox jumps over the lazy dog',
+  ru: 'съешь же ещё этих мягких французских булок да выпей чаю',
+  es: 'el veloz murcielago hindu comia feliz cardillo y kiwi',
+  de: 'zwolf boxkampfer jagen victor quer uber den deich',
+  fr: 'portez ce vieux whisky au juge blond qui fume',
+  it: 'ma la volpe col suo balzo ha raggiunto il quieto fido',
+  pt: 'um pequeno jabuti xereta viu dez cegonhas felizes',
+};
+
+// Описания фич на остальных 5 языках (EN/RU уже полные выше).
+const featsByLang: Partial<Record<Lang, Dict>> = {
+  es: {
+    'f1.t': 'Siete idiomas', 'f1.d': 'Interfaz y ejercicios en inglés, ruso, español, alemán, francés, italiano y portugués. El idioma se detecta del sistema automáticamente.',
+    'f2.t': 'Teclado interactivo', 'f2.d': 'Resalta la siguiente tecla, el Shift correcto, las zonas de los dedos y el arco de movimiento desde la fila base. Distribuciones: QWERTY, AZERTY, QWERTZ.',
+    'f3.t': 'Curso desde cero', 'f3.d': 'Lecciones progresivas: de la fila base (fj dk sl) a mayúsculas, dígitos, símbolos y frases completas. Un mapa con candados y estrellas por precisión.',
+    'f4.t': 'Entrenamiento con IA', 'f4.d': 'Genera palabras coherentes saturadas con las letras que más te cuestan. Métricas: Maestría, Ritmo y Cadencia de tus pulsaciones.',
+    'f5.t': 'Teclas débiles + mapa de calor', 'f5.d': 'La app encuentra tus teclas problemáticas según los errores, las colorea en el diagrama y las entrena específicamente.',
+    'f6.t': 'Competición y ranking', 'f6.d': 'Cinco disciplinas — alfabeto, palabras, dígitos, sprint — con medallas y una tabla de líderes en tiempo real.',
+    'f7.t': 'Test de velocidad + certificado', 'f7.d': 'Temporizador de 1, 5 o 10 minutos, objetivo de PPM netas, conteo honesto bruto/neto y precisión. Un certificado PNG con tu nombre al final.',
+    'f8.t': 'Literatura en 7 idiomas', 'f8.d': 'Dos bancos de textos: «El cuervo» de Poe en cada idioma y «Clásicos» — Pushkin, Shakespeare, Cervantes, Kafka, Proust, Dante, Machado de Assis.',
+  },
+  de: {
+    'f1.t': 'Sieben Sprachen', 'f1.d': 'Oberfläche und Übungen in Englisch, Russisch, Spanisch, Deutsch, Französisch, Italienisch und Portugiesisch. Die Sprache wird automatisch erkannt.',
+    'f2.t': 'Interaktive Tastatur', 'f2.d': 'Hebt die nächste Taste hervor, die richtige Umschalttaste, die Fingerzonen und den Bewegungsbogen von der Grundreihe. Layouts: QWERTY, AZERTY, QWERTZ.',
+    'f3.t': 'Kurs von Grund auf', 'f3.d': 'Aufbauende Lektionen: von der Grundreihe (fj dk sl) zu Großbuchstaben, Ziffern, Zeichen und ganzen Sätzen. Eine Karte mit Schlössern und Sternen für Genauigkeit.',
+    'f4.t': 'KI-Training', 'f4.d': 'Erzeugt zusammenhängende Wörter, gesättigt mit genau den Buchstaben, die dir schwerfallen. Metriken: Meisterschaft, Tempo und Rhythmus deiner Anschläge.',
+    'f5.t': 'Schwache Tasten + Heatmap', 'f5.d': 'Die App findet deine Problemtasten anhand der Fehler, färbt sie im Diagramm und trainiert genau diese.',
+    'f6.t': 'Wettbewerb & Rangliste', 'f6.d': 'Fünf Disziplinen — Alphabet, Wörter, Ziffern, Sprint — mit Medaillen und einer Echtzeit-Bestenliste.',
+    'f7.t': 'Tempotest + Zertifikat', 'f7.d': 'Ein 1-, 5- oder 10-Minuten-Timer, ein Netto-WPM-Ziel, ehrliche Brutto/Netto-Zählung und Genauigkeit. Am Ende ein PNG-Zertifikat mit deinem Namen.',
+    'f8.t': 'Literatur in 7 Sprachen', 'f8.d': 'Zwei Textbänke: Poes „Der Rabe“ in jeder Sprache und „Klassiker“ — Puschkin, Shakespeare, Cervantes, Kafka, Proust, Dante, Machado de Assis.',
+  },
+  fr: {
+    'f1.t': 'Sept langues', 'f1.d': 'Interface et exercices en anglais, russe, espagnol, allemand, français, italien et portugais. La langue est détectée automatiquement du système.',
+    'f2.t': 'Clavier interactif', 'f2.d': 'Met en évidence la touche suivante, la bonne Maj, les zones des doigts et l’arc de mouvement depuis la rangée de repos. Dispositions : QWERTY, AZERTY, QWERTZ.',
+    'f3.t': 'Cours depuis zéro', 'f3.d': 'Leçons progressives : de la rangée de repos (fj dk sl) aux majuscules, chiffres, symboles et phrases entières. Une carte avec des cadenas et des étoiles pour la précision.',
+    'f4.t': 'Entraînement par IA', 'f4.d': 'Génère des mots cohérents saturés des lettres qui te posent problème. Métriques : Maîtrise, Rythme et Cadence de tes frappes.',
+    'f5.t': 'Touches faibles + carte de chaleur', 'f5.d': 'L’app trouve tes touches à problème d’après les erreurs, les colore sur le schéma et les entraîne spécifiquement.',
+    'f6.t': 'Compétition et classement', 'f6.d': 'Cinq disciplines — alphabet, mots, chiffres, sprint — avec médailles et un classement en temps réel.',
+    'f7.t': 'Test de vitesse + certificat', 'f7.d': 'Un minuteur de 1, 5 ou 10 minutes, un objectif de MPM nets, un comptage honnête brut/net et la précision. Un certificat PNG avec ton nom à la fin.',
+    'f8.t': 'Littérature en 7 langues', 'f8.d': 'Deux banques de textes : « Le Corbeau » de Poe dans chaque langue et « Classiques » — Pouchkine, Shakespeare, Cervantès, Kafka, Proust, Dante, Machado de Assis.',
+  },
+  it: {
+    'f1.t': 'Sette lingue', 'f1.d': 'Interfaccia ed esercizi in inglese, russo, spagnolo, tedesco, francese, italiano e portoghese. La lingua viene rilevata automaticamente dal sistema.',
+    'f2.t': 'Tastiera interattiva', 'f2.d': 'Evidenzia il tasto successivo, lo Shift giusto, le zone delle dita e l’arco di movimento dalla riga di base. Layout: QWERTY, AZERTY, QWERTZ.',
+    'f3.t': 'Corso da zero', 'f3.d': 'Lezioni progressive: dalla riga di base (fj dk sl) a maiuscole, cifre, simboli e frasi intere. Una mappa con lucchetti e stelle per la precisione.',
+    'f4.t': 'Allenamento con IA', 'f4.d': 'Genera parole coerenti sature proprio delle lettere che ti riescono peggio. Metriche: Maestria, Ritmo e Cadenza dei tuoi tasti.',
+    'f5.t': 'Tasti deboli + mappa di calore', 'f5.d': 'L’app trova i tuoi tasti problematici dagli errori, li colora sul diagramma e li allena in modo mirato.',
+    'f6.t': 'Competizione e classifica', 'f6.d': 'Cinque discipline — alfabeto, parole, cifre, sprint — con medaglie e una classifica in tempo reale.',
+    'f7.t': 'Test di velocità + certificato', 'f7.d': 'Un timer di 1, 5 o 10 minuti, un obiettivo di PPM nette, conteggio onesto lordo/netto e precisione. Alla fine un certificato PNG con il tuo nome.',
+    'f8.t': 'Letteratura in 7 lingue', 'f8.d': 'Due banche di testi: «Il corvo» di Poe in ogni lingua e «Classici» — Pushkin, Shakespeare, Cervantes, Kafka, Proust, Dante, Machado de Assis.',
+  },
+  pt: {
+    'f1.t': 'Sete idiomas', 'f1.d': 'Interface e exercícios em inglês, russo, espanhol, alemão, francês, italiano e português. O idioma é detetado do sistema automaticamente.',
+    'f2.t': 'Teclado interativo', 'f2.d': 'Destaca a próxima tecla, o Shift certo, as zonas dos dedos e o arco de movimento a partir da linha base. Disposições: QWERTY, AZERTY, QWERTZ.',
+    'f3.t': 'Curso do zero', 'f3.d': 'Lições progressivas: da linha base (fj dk sl) a maiúsculas, dígitos, símbolos e frases inteiras. Um mapa com cadeados e estrelas por precisão.',
+    'f4.t': 'Treino com IA', 'f4.d': 'Gera palavras coerentes saturadas com as letras que te custam mais. Métricas: Maestria, Ritmo e Cadência das tuas teclas.',
+    'f5.t': 'Teclas fracas + mapa de calor', 'f5.d': 'A app encontra as tuas teclas problemáticas pelos erros, colore-as no diagrama e treina exatamente essas.',
+    'f6.t': 'Competição e ranking', 'f6.d': 'Cinco disciplinas — alfabeto, palavras, dígitos, sprint — com medalhas e uma tabela de líderes em tempo real.',
+    'f7.t': 'Teste de velocidade + certificado', 'f7.d': 'Um cronómetro de 1, 5 ou 10 minutos, uma meta de PPM líquidas, contagem honesta bruta/líquida e precisão. No fim, um certificado PNG com o teu nome.',
+    'f8.t': 'Literatura em 7 idiomas', 'f8.d': 'Dois bancos de textos: «O Corvo» de Poe em cada idioma e «Clássicos» — Pushkin, Shakespeare, Cervantes, Kafka, Proust, Dante, Machado de Assis.',
+  },
+};
+
+export const ui: Record<Lang, Dict> = { en, ru, es, de, fr, it, pt };
+(Object.keys(demoSamples) as Lang[]).forEach((l) => { ui[l]['demo.sample'] = demoSamples[l]; });
+(Object.keys(featsByLang) as Lang[]).forEach((l) => Object.assign(ui[l], featsByLang[l]));

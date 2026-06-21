@@ -1,0 +1,154 @@
+---
+import { langFlag, languages, type Lang } from '../i18n/ui';
+import { useTranslations, asset } from '../i18n/utils';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+const releases = 'https://github.com/donosov999-ai/typerighting/releases/latest';
+const feats = ['f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8'];
+const heroLangs: Lang[] = ['ru', 'en', 'es', 'de', 'fr', 'it', 'pt'];
+const delay = (i: number) => `reveal d${Math.min(i, 5)}`;
+---
+<header class="hero">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <div class="badge reveal">{t('hero.badge')}</div>
+    <h1 class="reveal d1">{t('hero.h1a')}<span class="grad">{t('hero.h1grad')}</span>{t('hero.h1b')}</h1>
+    <p class="lead reveal d2">{t('hero.lead')}</p>
+    <div class="cta-row reveal d3">
+      <a class="btn btn-primary" href={appUrl}>{t('hero.cta1')}</a>
+      <a class="btn btn-ghost" href="#download">{t('hero.cta2')}</a>
+    </div>
+    <div class="chips reveal d4">
+      {heroLangs.map((l) => <span class="chip"><span class="fl">{langFlag[l]}</span>{languages[l]}</span>)}
+    </div>
+    <div class="stats reveal d5">
+      <div class="stat"><b data-count="7">7</b><span>{t('stat.langs')}</span></div>
+      <div class="stat"><b data-count="4846">4846</b><span>{t('stat.ex')}</span></div>
+      <div class="stat"><b data-count="8">8</b><span>{t('stat.modes')}</span></div>
+      <div class="stat"><b>★</b><span>{t('stat.rank')}</span></div>
+      <div class="stat"><b>0&nbsp;€</b><span>{t('stat.free')}</span></div>
+    </div>
+    <div class="shot float"><img src={asset('img/hero.jpg')} alt={t('meta.title')} width="900" height="500" /></div>
+    <p class="shot-cap reveal">{t('hero.cap')}</p>
+  </div>
+</header>
+
+<section class="alt">
+  <div class="blobs"><span class="blob b3"></span></div>
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>{t('demo.title')}</h2><p>{t('demo.sub')}</p></div>
+    <div class="demo reveal d1">
+      <div class="demo-sample" id="demoSample" data-text={t('demo.sample')}></div>
+      <input class="demo-input" id="demoInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder={t('demo.ph')} aria-label={t('demo.ph')} />
+      <div class="demo-bar"><span id="demoStat" class="demo-stat"></span><a class="demo-go" href={appUrl}>{t('demo.full')} →</a></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>{t('move.h2')}</h2><p>{t('move.p')}</p></div>
+    <div class="shot reveal" style="max-width:800px"><img src={asset('img/keyboard.jpg')} alt={t('move.h2')} loading="lazy" /></div>
+    <p class="shot-cap reveal">{t('move.cap')}</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="blobs"><span class="blob b2"></span></div>
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>{t('feat.h2')}</h2><p>{t('feat.p')}</p></div>
+    <div class="grid">
+      {feats.map((f, i) => (
+        <div class={`card ${delay(i % 3 + 1)}`}><span class="ic"><img src={asset(`img/feat/${f}.png`)} alt="" width="56" height="56" /></span><h3>{t(f + '.t')}</h3><p>{t(f + '.d')}</p></div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal"><h2>{t('prof.h2')}</h2><p>{t('prof.p')}</p></div>
+    <div class="profiles">
+      <div class="prof m reveal d1"><div class="ic"><img src={asset('img/prof/m.png')} class="picon" alt="" /></div><h3>{t('prof.m.t')}</h3><p>{t('prof.m.d')}</p></div>
+      <div class="prof f reveal d2"><div class="ic"><img src={asset('img/prof/f.png')} class="picon" alt="" /></div><h3>{t('prof.f.t')}</h3><p>{t('prof.f.d')}</p></div>
+      <div class="prof kids reveal d3"><div class="ic"><img src={asset('img/prof/kids.png')} class="picon" alt="" /></div><h3>{t('prof.kids.t')}</h3><p>{t('prof.kids.d')}</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="download" class="alt">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b3"></span></div>
+  <div class="wrap">
+    <div class="dl reveal">
+      <h2>{t('dl.h2')}</h2><p>{t('dl.p')}</p>
+      <div class="dl-row">
+        <a class="dl-btn" href={releases}><span class="os">🍎</span> macOS</a>
+        <a class="dl-btn" href={releases}><span class="os">🪟</span> Windows</a>
+        <a class="dl-btn" href={releases}><span class="os">🐧</span> Linux</a>
+        <a class="dl-btn" href={appUrl}><span class="os">🌐</span> {t('dl.browser')}</a>
+      </div>
+      <p class="dl-note">{t('dl.note')}</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // включаем reveal-эффект только когда JS жив (иначе контент виден без него)
+  document.documentElement.classList.add('js');
+  // Scroll-reveal
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Count-up статов при появлении
+  const countIO = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const el = e.target as HTMLElement;
+      const target = parseInt(el.dataset.count || '0', 10);
+      const dur = 1100; const start = performance.now();
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      countIO.unobserve(el);
+    }
+  }, { threshold: 0.6 });
+  document.querySelectorAll<HTMLElement>('[data-count]').forEach((el) => countIO.observe(el));
+
+  // Живая мини-демо печати
+  const sampleEl = document.getElementById('demoSample');
+  const inputEl = document.getElementById('demoInput') as HTMLInputElement | null;
+  const statEl = document.getElementById('demoStat');
+  if (sampleEl && inputEl && statEl) {
+    const text = sampleEl.dataset.text || '';
+    const paint = () => {
+      const val = inputEl.value;
+      let html = '', ok = 0;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i];
+        if (i < val.length) {
+          const good = val[i] === c;
+          if (good) ok++;
+          html += `<span class="${good ? 'd-ok' : 'd-bad'}">${c === ' ' ? '&nbsp;' : c}</span>`;
+        } else if (i === val.length) {
+          html += `<span class="d-cur">${c === ' ' ? '&nbsp;' : c}</span>`;
+        } else {
+          html += `<span class="d-pend">${c === ' ' ? '&nbsp;' : c}</span>`;
+        }
+      }
+      sampleEl.innerHTML = html;
+      const acc = val.length ? Math.round((ok / val.length) * 100) : 100;
+      statEl.textContent = `${val.length}/${text.length} · ${acc}%`;
+      if (val.length >= text.length) statEl.textContent += ' ✓';
+    };
+    inputEl.addEventListener('input', paint);
+    paint();
+  }
+</script>

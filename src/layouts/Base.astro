@@ -1,0 +1,53 @@
+---
+import '../styles/global.css';
+import { languages, langFlag, type Lang } from '../i18n/ui';
+import { useTranslations, localizedPath, asset } from '../i18n/utils';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const locales: Lang[] = ['en', 'ru', 'es', 'de', 'fr', 'it', 'pt'];
+const site = (Astro.site?.toString() ?? '').replace(/\/$/, '');
+// Приложение (тренажёр) — отдельная Vite-сборка. Пока ведёт на текущую веб-версию;
+// после переноса приложения в /app/ этого же домена — поменять на '/app/'.
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+---
+<!doctype html>
+<html lang={lang}>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{t('meta.title')}</title>
+  <meta name="description" content={t('meta.desc')} />
+  <link rel="canonical" href={site + localizedPath(lang)} />
+  {locales.map((l) => <link rel="alternate" hreflang={l} href={site + localizedPath(l)} />)}
+  <link rel="alternate" hreflang="x-default" href={site + '/'} />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={t('meta.title')} />
+  <meta property="og:description" content={t('meta.desc')} />
+  <meta property="og:image" content={site + asset('img/og.jpg')} />
+  <meta property="og:url" content={site + localizedPath(lang)} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href={asset('img/favicon.png')} />
+</head>
+<body>
+  <nav class="nav"><div class="wrap nav-in">
+    <a class="logo" href={localizedPath(lang)}>Type<span>RIGHT</span>ing</a>
+    <div class="nav-right">
+      <select class="langsel" aria-label="Language" onchange="location.href=this.value">
+        {locales.map((l) => <option value={localizedPath(l)} selected={l === lang}>{langFlag[l]} {languages[l]}</option>)}
+      </select>
+      <a class="nav-cta" href={appUrl}>{t('nav.cta')}</a>
+    </div>
+  </div></nav>
+
+  <slot />
+
+  <footer><div class="wrap">
+    <div class="fl-row">
+      {locales.map((l) => <a href={localizedPath(l)} title={languages[l]}>{langFlag[l]}</a>)}
+    </div>
+    <p>{t('foot.made')}</p>
+    <p style="margin-top:6px">{t('foot.author')} <b>Denis Onosov (ODV999)</b></p>
+  </div></footer>
+</body>
+</html>
