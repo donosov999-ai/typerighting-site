@@ -2,6 +2,7 @@
 // Факты (история/создатели/рекорды/исследования) проверены агентами по web-источникам;
 // доказательная база честная (спорное помечено). EN+RU полные; остальные языки — fallback EN.
 import type { Lang } from '../i18n/ui';
+import i18nData from './learn-i18n.json';
 
 export interface Block { h: string; body: string; }
 export interface FAQ { q: string; a: string; }
@@ -761,5 +762,15 @@ export const TOPICS: LearnTopic[] = [
     },
   },
 ];
+
+// Переводы 6 базовых тем (es/de/fr/it/pt) собраны субагентами-переводчиками
+// из английских версий и сложены в learn-i18n.json → мерж в content[lang].
+const I18N = i18nData as Record<string, Record<string, TopicContent>>;
+for (const t of TOPICS) {
+  for (const lang of Object.keys(I18N)) {
+    const tr = I18N[lang][t.slug];
+    if (tr) (t.content as Record<string, TopicContent>)[lang] = tr;
+  }
+}
 
 export const TOPIC_SLUGS = TOPICS.map((t) => t.slug);
