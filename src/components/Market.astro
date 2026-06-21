@@ -1,0 +1,32 @@
+---
+import type { Market } from '../data/markets';
+import { localizedPath } from '../i18n/utils';
+const { market } = Astro.props as { market: Market };
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+---
+<header class="hero">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <div class="badge">{market.badge}</div>
+    <h1>{market.pre}<span class="grad">{market.grad}</span>{market.post}</h1>
+    <p class="lead">{market.sub}</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href={appUrl}>{market.cta}</a>
+      <a class="btn btn-ghost" href={localizedPath(market.lang)}>TypeRIGHTing →</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="blobs"><span class="blob b3"></span></div>
+  <div class="wrap">
+    <div class="grid">
+      {market.feats.map((f) => (
+        <div class="card"><span class="ic mkt-ic">{f.ic}</span><h3>{f.t}</h3><p>{f.d}</p></div>
+      ))}
+    </div>
+    <div class="center" style="margin-top:44px">
+      <a class="btn btn-primary" href={appUrl}>{market.cta}</a>
+    </div>
+  </div>
+</section>

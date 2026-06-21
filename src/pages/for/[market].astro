@@ -1,0 +1,13 @@
+---
+import Base from '../../layouts/Base.astro';
+import Market from '../../components/Market.astro';
+import { MARKETS } from '../../data/markets';
+
+export function getStaticPaths() {
+  return MARKETS.map((m) => ({ params: { market: m.slug }, props: { market: m } }));
+}
+const { market } = Astro.props;
+---
+<Base lang={market.lang} metaTitle={market.seoTitle} metaDesc={market.seoDesc}>
+  <Market market={market} />
+</Base>

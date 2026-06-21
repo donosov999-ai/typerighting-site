@@ -300,3 +300,6 @@ section { position: relative; overflow: hidden; }
 .rating-table .r-top td { background: color-mix(in srgb, var(--accent) 6%, transparent); }
 .rating-empty { text-align: center; padding: 40px 16px; color: var(--muted); }
 .rating-empty p { font-size: 17px; margin-bottom: 20px; }
+
+/* иконка-акцент в лендингах рынков (эмодзи или буква é/ü) */
+.mkt-ic { font-size: 38px; font-weight: 700; color: var(--accent); line-height: 1; display: block; }
