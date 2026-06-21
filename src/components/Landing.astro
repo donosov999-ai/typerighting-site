@@ -95,10 +95,10 @@ const delay = (i: number) => `reveal d${Math.min(i, 5)}`;
     <div class="dl reveal">
       <h2>{t('dl.h2')}</h2><p>{t('dl.p')}</p>
       <div class="dl-row">
-        <a class="dl-btn" href={releases}><span class="os">🍎</span> macOS</a>
-        <a class="dl-btn" href={releases}><span class="os">🪟</span> Windows</a>
-        <a class="dl-btn" href={releases}><span class="os">🐧</span> Linux</a>
-        <a class="dl-btn" href={appUrl}><span class="os">🌐</span> {t('dl.browser')}</a>
+        <a class="dl-btn dl-mac" href={releases}><span class="os">🍎</span> macOS</a>
+        <a class="dl-btn dl-win" href={releases}><span class="os">🪟</span> Windows</a>
+        <a class="dl-btn dl-linux" href={releases}><span class="os">🐧</span> Linux</a>
+        <a class="dl-btn dl-web" href={appUrl}><span class="os">🌐</span> {t('dl.browser')}</a>
       </div>
       <p class="dl-note">{t('dl.note')}</p>
     </div>
