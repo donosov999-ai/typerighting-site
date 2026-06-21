@@ -55,6 +55,12 @@ const en: Dict = {
   'demo.ok': 'Account created! Open the trainer and sign in with your nick.',
   'demo.taken': 'This nick is taken — try another', 'demo.short': 'Nick ≥ 2 chars, PIN ≥ 4 digits',
   'demo.net': 'Network error, try again',
+  'rating.nav': 'Leaderboard', 'rating.title': 'Leaderboard', 'rating.sub': 'Fastest typists — by discipline and language',
+  'rating.disc': 'Discipline', 'rating.lang': 'Language', 'rating.rank': '#', 'rating.player': 'Player',
+  'rating.wpm': 'WPM', 'rating.acc': 'Accuracy', 'rating.loading': 'Loading…',
+  'rating.empty': 'No results yet — be the first! Play the competition in the trainer.',
+  'rating.open': 'Open competition →',
+  'disc.alpha_fwd': 'Alphabet A→Z', 'disc.alpha_rev': 'Alphabet Z→A', 'disc.words': 'Words', 'disc.digits': 'Digits', 'disc.sprint': 'Sprint',
 };
 
 const ru: Dict = {
@@ -100,6 +106,12 @@ const ru: Dict = {
   'demo.ok': 'Аккаунт создан! Открой тренажёр и войди своим ником.',
   'demo.taken': 'Этот ник занят — попробуй другой', 'demo.short': 'Ник ≥ 2 символа, PIN ≥ 4 цифры',
   'demo.net': 'Ошибка сети, попробуй ещё раз',
+  'rating.nav': 'Рейтинг', 'rating.title': 'Рейтинг участников', 'rating.sub': 'Самые быстрые — по дисциплине и языку',
+  'rating.disc': 'Дисциплина', 'rating.lang': 'Язык', 'rating.rank': '#', 'rating.player': 'Участник',
+  'rating.wpm': 'WPM', 'rating.acc': 'Точность', 'rating.loading': 'Загрузка…',
+  'rating.empty': 'Пока нет результатов — стань первым! Сыграй соревнование в тренажёре.',
+  'rating.open': 'Открыть соревнование →',
+  'disc.alpha_fwd': 'Алфавит А→Я', 'disc.alpha_rev': 'Алфавит Я→А', 'disc.words': 'Слова', 'disc.digits': 'Цифры', 'disc.sprint': 'Спринт',
 };
 
 // Видимое «лицо» на остальных 5 языках (детали фич падают на EN через useTranslations).

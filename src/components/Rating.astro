@@ -1,0 +1,71 @@
+---
+import { langFlag, languages, type Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+const discs = ['alpha_fwd', 'alpha_rev', 'words', 'digits', 'sprint'];
+const langs: Lang[] = ['en', 'ru', 'es', 'de', 'fr', 'it', 'pt'];
+---
+<section class="rating-sec">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <div class="sec-head"><h2>{t('rating.title')}</h2><p>{t('rating.sub')}</p></div>
+    <div class="rating-card" id="ratingCard"
+      data-empty={t('rating.empty')} data-loading={t('rating.loading')} data-app={appUrl} data-open={t('rating.open')}>
+      <div class="rating-filters">
+        <label>{t('rating.disc')}
+          <select id="fDisc">{discs.map((d) => <option value={d}>{t('disc.' + d)}</option>)}</select>
+        </label>
+        <label>{t('rating.lang')}
+          <select id="fLang">{langs.map((l) => <option value={l} selected={l === lang}>{langFlag[l]} {languages[l]}</option>)}</select>
+        </label>
+      </div>
+      <table class="rating-table">
+        <thead><tr>
+          <th class="r-rank">{t('rating.rank')}</th><th>{t('rating.player')}</th>
+          <th class="r-wpm">{t('rating.wpm')}</th><th class="r-acc">{t('rating.acc')}</th>
+        </tr></thead>
+        <tbody id="ratingBody"></tbody>
+      </table>
+      <div class="rating-empty" id="ratingEmpty" hidden></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const K = 'sb_publishable_A2vJ5DjemTZIKrKX6XGqvQ_WaiuAkk1';
+  const card = document.getElementById('ratingCard') as HTMLElement | null;
+  const body = document.getElementById('ratingBody');
+  const empty = document.getElementById('ratingEmpty');
+  const fDisc = document.getElementById('fDisc') as HTMLSelectElement | null;
+  const fLang = document.getElementById('fLang') as HTMLSelectElement | null;
+  if (card && body && empty && fDisc && fLang) {
+    const medal = (i: number) => (i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : String(i + 1));
+    const esc = (s: unknown) => String(s).replace(/[<>&]/g, (c) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c] || c));
+    const load = async () => {
+      body.innerHTML = '';
+      empty.hidden = true;
+      const q = `discipline=eq.${fDisc.value}&lang=eq.${fLang.value}&order=wpm.desc&limit=50`;
+      try {
+        const res = await fetch(`https://iuvvheeocobhiothfgei.supabase.co/rest/v1/typing_leaderboard?${q}`,
+          { headers: { apikey: K, Authorization: 'Bearer ' + K } });
+        const rows = res.ok ? await res.json() : [];
+        if (!rows.length) {
+          empty.innerHTML = `<p>${card.dataset.empty}</p><a class="btn btn-primary" href="${card.dataset.app}">${card.dataset.open}</a>`;
+          empty.hidden = false;
+          return;
+        }
+        body.innerHTML = rows.map((r: { name: string; wpm: number; accuracy: number }, i: number) =>
+          `<tr${i < 3 ? ' class="r-top"' : ''}><td class="r-rank">${medal(i)}</td><td>${esc(r.name)}</td><td class="r-wpm">${r.wpm}</td><td class="r-acc">${r.accuracy}%</td></tr>`).join('');
+      } catch {
+        empty.innerHTML = `<p>${card.dataset.empty}</p>`;
+        empty.hidden = false;
+      }
+    };
+    fDisc.addEventListener('change', load);
+    fLang.addEventListener('change', load);
+    load();
+  }
+</script>

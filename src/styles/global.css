@@ -274,3 +274,29 @@ section { position: relative; overflow: hidden; }
 .demo-reg .btn { white-space: nowrap; font-size: 16px; padding: 13px 24px; }
 .demo-regmsg { margin-top: 12px; font-size: 14px; color: var(--accent); min-height: 1.2em; }
 .demo-regmsg a { font-weight: 600; }
+
+/* ── Навигация: ссылка ── */
+.nav-link { font-size: 14px; color: var(--text); font-weight: 450; transition: color .2s; }
+.nav-link:hover { color: var(--accent); }
+
+/* ── Рейтинг участников ── */
+.rating-card { max-width: 760px; margin: 0 auto; padding: 24px;
+  background: color-mix(in srgb, var(--surface) 58%, transparent);
+  backdrop-filter: blur(24px) saturate(170%); -webkit-backdrop-filter: blur(24px) saturate(170%);
+  border: 1px solid color-mix(in srgb, var(--text) 9%, transparent); border-radius: var(--radius-l);
+  box-shadow: var(--shadow-m); }
+.rating-filters { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+.rating-filters label { font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 5px; }
+.rating-filters select { font: inherit; font-size: 14px; padding: 9px 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; }
+.rating-table { width: 100%; border-collapse: collapse; }
+.rating-table th { font-size: 12px; text-transform: uppercase; letter-spacing: .5px; text-align: left;
+  color: var(--muted); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+.rating-table td { padding: 12px; border-bottom: 1px solid var(--line); font-size: 15px; }
+.rating-table .r-rank { width: 48px; font-weight: 600; }
+.rating-table .r-wpm { font-weight: 700; color: var(--accent); }
+.rating-table .r-acc { color: var(--muted); }
+.rating-table th.r-wpm, .rating-table th.r-acc, .rating-table td.r-wpm, .rating-table td.r-acc { text-align: right; }
+.rating-table .r-top td { background: color-mix(in srgb, var(--accent) 6%, transparent); }
+.rating-empty { text-align: center; padding: 40px 16px; color: var(--muted); }
+.rating-empty p { font-size: 17px; margin-bottom: 20px; }
