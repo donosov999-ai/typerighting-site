@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import LearnIndex from '../../components/LearnIndex.astro';
+import { useTranslations } from '../../i18n/utils';
+const t = useTranslations('en');
+---
+<Base lang="en" metaTitle={t('learn.metaTitle')} metaDesc={t('learn.metaDesc')}>
+  <LearnIndex lang="en" />
+</Base>

@@ -320,3 +320,23 @@ section { position: relative; overflow: hidden; }
 
 /* иконка-акцент в лендингах рынков (эмодзи или буква é/ü) */
 .mkt-ic { font-size: 38px; font-weight: 700; color: var(--accent); line-height: 1; display: block; }
+
+/* ── Раздел «Обучение» (контентные SEO-страницы) ── */
+.learn, .learn-idx { padding: 60px 0 88px; position: relative; overflow: hidden; }
+.learn-crumb { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+.learn-crumb a { color: var(--accent); }
+.learn-head { max-width: 760px; margin: 0 auto 44px; text-align: center; }
+.learn-head h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.1; }
+.learn-head .lead { margin: 16px auto 24px; }
+.learn-body { max-width: 760px; margin: 0 auto; }
+.learn-block { margin-bottom: 30px; }
+.learn-block h2 { font-size: 23px; font-weight: 600; letter-spacing: -.4px; margin-bottom: 10px; }
+.learn-block p { font-size: 17px; line-height: 1.65; color: var(--text); }
+.faq { display: grid; gap: 10px; }
+.faq-item { background: color-mix(in srgb, var(--surface) 60%, transparent); backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px); border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+.faq-item summary { cursor: pointer; font-weight: 500; font-size: 16px; }
+.faq-item p { margin-top: 10px; font-size: 15px; color: var(--muted); line-height: 1.6; }
+.learn-src { max-width: 760px; margin: 36px auto 0; font-size: 13px; color: var(--muted); text-align: center; }
+.learn-card { text-decoration: none; }
+.learn-card h3 { margin: 12px 0 6px; }

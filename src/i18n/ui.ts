@@ -61,6 +61,10 @@ const en: Dict = {
   'rating.empty': 'No results yet — be the first! Play the competition in the trainer.',
   'rating.open': 'Open competition →',
   'disc.alpha_fwd': 'Alphabet A→Z', 'disc.alpha_rev': 'Alphabet Z→A', 'disc.words': 'Words', 'disc.digits': 'Digits', 'disc.sprint': 'Sprint',
+  'learn.nav': 'Learn', 'learn.title': 'Learn touch typing', 'learn.sub': 'Guides on touch typing, speed and how to learn — facts checked, no fluff.',
+  'learn.cta': 'Practice in the trainer', 'learn.faq': 'FAQ', 'learn.sources': 'Sources',
+  'learn.metaTitle': 'Learn Touch Typing — Guides on Speed, Method & History | TypeRIGHTing',
+  'learn.metaDesc': 'In-depth guides on touch typing: what it is, average and record typing speeds, how to learn step by step, history and FAQ.',
 };
 
 const ru: Dict = {
@@ -112,6 +116,10 @@ const ru: Dict = {
   'rating.empty': 'Пока нет результатов — стань первым! Сыграй соревнование в тренажёре.',
   'rating.open': 'Открыть соревнование →',
   'disc.alpha_fwd': 'Алфавит А→Я', 'disc.alpha_rev': 'Алфавит Я→А', 'disc.words': 'Слова', 'disc.digits': 'Цифры', 'disc.sprint': 'Спринт',
+  'learn.nav': 'Обучение', 'learn.title': 'Обучение слепой печати', 'learn.sub': 'Разборы про слепую печать, скорость и как научиться — факты проверены, без воды.',
+  'learn.cta': 'Тренироваться', 'learn.faq': 'Частые вопросы', 'learn.sources': 'Источники',
+  'learn.metaTitle': 'Обучение слепой печати — скорость, метод, история | TypeRIGHTing',
+  'learn.metaDesc': 'Глубокие разборы про слепую печать: что это, средние и рекордные скорости, как научиться пошагово, история и FAQ.',
 };
 
 // Видимое «лицо» на остальных 5 языках (детали фич падают на EN через useTranslations).

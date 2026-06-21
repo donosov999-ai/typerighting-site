@@ -1,0 +1,17 @@
+---
+import Base from '../../../layouts/Base.astro';
+import LearnPage from '../../../components/LearnPage.astro';
+import { TOPICS } from '../../../data/learn';
+import type { Lang } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  const langs: Lang[] = ['ru', 'es', 'de', 'fr', 'it', 'pt'];
+  return TOPICS.flatMap((topic) => langs.map((lang) => ({ params: { lang, topic: topic.slug }, props: { topic } })));
+}
+const { lang } = Astro.params as { lang: Lang };
+const { topic } = Astro.props;
+const c = (topic.content[lang] ?? topic.content.en)!;
+---
+<Base lang={lang} metaTitle={c.metaTitle} metaDesc={c.metaDesc}>
+  <LearnPage topic={topic} lang={lang} />
+</Base>

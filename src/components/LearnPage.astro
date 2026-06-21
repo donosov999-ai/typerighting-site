@@ -1,0 +1,46 @@
+---
+import type { LearnTopic, TopicContent } from '../data/learn';
+import type { Lang } from '../i18n/ui';
+import { useTranslations, localizedPath } from '../i18n/utils';
+
+const { topic, lang } = Astro.props as { topic: LearnTopic; lang: Lang };
+const t = useTranslations(lang);
+const c = (topic.content[lang] ?? topic.content.en) as TopicContent;
+const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
+// FAQ → JSON-LD для rich snippets в поиске
+const faqLd = {
+  '@context': 'https://schema.org', '@type': 'FAQPage',
+  mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<article class="learn">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b2"></span></div>
+  <div class="wrap">
+    <p class="learn-crumb"><a href={localizedPath(lang, 'learn')}>{t('learn.nav')}</a> / {c.title}</p>
+    <header class="learn-head">
+      <h1>{topic.icon} {c.title}</h1>
+      <p class="lead">{c.lead}</p>
+      <a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a>
+    </header>
+
+    <div class="learn-body">
+      {c.blocks.map((b) => (
+        <section class="learn-block"><h2>{b.h}</h2><p>{b.body}</p></section>
+      ))}
+
+      <section class="learn-block">
+        <h2>{t('learn.faq')}</h2>
+        <div class="faq">
+          {c.faq.map((f) => (
+            <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>
+          ))}
+        </div>
+      </section>
+    </div>
+
+    <p class="learn-src">{t('learn.sources')}: {c.sources.join(' · ')}</p>
+    <div class="center" style="margin-top:28px"><a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a></div>
+  </div>
+</article>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)} />

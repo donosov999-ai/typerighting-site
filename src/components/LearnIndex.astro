@@ -1,0 +1,25 @@
+---
+import { TOPICS } from '../data/learn';
+import { localizedPath, useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+---
+<section class="learn-idx">
+  <div class="blobs"><span class="blob b1"></span><span class="blob b3"></span></div>
+  <div class="wrap">
+    <div class="sec-head"><h1>{t('learn.title')}</h1><p>{t('learn.sub')}</p></div>
+    <div class="grid">
+      {TOPICS.map((topic) => {
+        const c = topic.content[lang] ?? topic.content.en!;
+        return (
+          <a class="card learn-card" href={localizedPath(lang, 'learn/' + topic.slug)}>
+            <span class="ic" style="font-size:40px">{topic.icon}</span>
+            <h3>{c.title}</h3><p>{c.lead}</p>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

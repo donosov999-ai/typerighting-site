@@ -1,0 +1,14 @@
+---
+import Base from '../../layouts/Base.astro';
+import LearnPage from '../../components/LearnPage.astro';
+import { TOPICS } from '../../data/learn';
+
+export function getStaticPaths() {
+  return TOPICS.map((topic) => ({ params: { topic: topic.slug }, props: { topic } }));
+}
+const { topic } = Astro.props;
+const c = topic.content.en!;
+---
+<Base lang="en" metaTitle={c.metaTitle} metaDesc={c.metaDesc}>
+  <LearnPage topic={topic} lang="en" />
+</Base>

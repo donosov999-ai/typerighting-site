@@ -35,6 +35,7 @@ const appUrl = 'https://donosov999-ai.github.io/ODV999/typerighting/';
   <nav class="nav"><div class="wrap nav-in">
     <a class="logo" href={localizedPath(lang)}>Type<span>RIGHT</span>ing</a>
     <div class="nav-right">
+      <a class="nav-link" href={localizedPath(lang, 'learn')}>{t('learn.nav')}</a>
       <a class="nav-link" href={localizedPath(lang, 'rating')}>{t('rating.nav')}</a>
       <select class="langsel" aria-label="Language" onchange="location.href=this.value">
         {locales.map((l) => <option value={localizedPath(l)} selected={l === lang}>{langFlag[l]} {languages[l]}</option>)}
