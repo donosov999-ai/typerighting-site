@@ -23,22 +23,36 @@ const faqLd = {
       <a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a>
     </header>
 
-    <div class="learn-body">
-      {c.blocks.map((b) => (
-        <section class="learn-block"><h2>{b.h}</h2><p>{b.body}</p></section>
-      ))}
-
-      <section class="learn-block">
-        <h2>{t('learn.faq')}</h2>
-        <div class="faq">
-          {c.faq.map((f) => (
-            <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>
-          ))}
+    <div class="learn-layout">
+      <aside class="learn-toc">
+        <div class="learn-toc-in">
+          <p class="learn-toc-h">{c.title}</p>
+          <nav>
+            {c.blocks.map((b, i) => (
+              <a href={`#b${i}`}>{b.h}</a>
+            ))}
+            <a href="#faq">{t('learn.faq')}</a>
+          </nav>
         </div>
-      </section>
-    </div>
+      </aside>
 
-    <p class="learn-src">{t('learn.sources')}: {c.sources.join(' · ')}</p>
+      <div class="learn-body">
+        {c.blocks.map((b, i) => (
+          <section class="learn-block" id={`b${i}`}><h2>{b.h}</h2><p>{b.body}</p></section>
+        ))}
+
+        <section class="learn-block" id="faq">
+          <h2>{t('learn.faq')}</h2>
+          <div class="faq">
+            {c.faq.map((f) => (
+              <details class="faq-item"><summary>{f.q}</summary><p>{f.a}</p></details>
+            ))}
+          </div>
+        </section>
+
+        <p class="learn-src">{t('learn.sources')}: {c.sources.join(' · ')}</p>
+      </div>
+    </div>
     <div class="center" style="margin-top:28px"><a class="btn btn-primary" href={appUrl}>{t('learn.cta')}</a></div>
   </div>
 </article>
