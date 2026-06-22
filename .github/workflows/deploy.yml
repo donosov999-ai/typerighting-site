@@ -1,36 +1,32 @@
-name: Deploy site to GitHub Pages
+name: Deploy site to Contabo (typefree.pro)
+
+# Промо-сайт переехал с GitHub Pages на свой домен typefree.pro (Contabo, рядом
+# с psy-games.pro). Сборка Astro (base='/') + rsync в docroot домена.
+# Пароль Contabo — в секрете репозитория CONTABO_PASS (user psygames).
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build Astro site
-        uses: withastro/action@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 22
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          node-version: '22'
+      - name: Install deps
+        run: npm install --no-audit --no-fund
+      - name: Build Astro site
+        run: npm run build
+      - name: Deploy dist → Contabo (rsync)
+        env:
+          CONTABO_PASS: ${{ secrets.CONTABO_PASS }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq sshpass rsync
+          sshpass -p "$CONTABO_PASS" rsync -az --delete \
+            -e "ssh -o StrictHostKeyChecking=no" \
+            dist/ psygames@5.189.130.76:web/typefree.pro/public_html/
+          echo "✅ typefree.pro обновлён"

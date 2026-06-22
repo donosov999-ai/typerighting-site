@@ -3,12 +3,10 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 // Промо-сайт TypeRIGHTing. 7 языков отдельными URL (EN на корне, остальные /xx/).
-// site/base правятся при деплое: свой домен → site='https://<домен>', base убрать;
-// GitHub Pages в подпапке → base='/typerighting-site'.
+// Свой домен typefree.pro на Contabo (рядом с psy-games.pro). Без base — сайт в корне домена.
+// Если когда-то вернуть на GitHub Pages в подпапку — base='/typerighting-site' + site='https://donosov999-ai.github.io'.
 export default defineConfig({
-  // GitHub Pages (подпапка) до покупки домена. С доменом: site='https://<домен>', base убрать.
-  site: 'https://donosov999-ai.github.io',
-  base: '/typerighting-site',
+  site: 'https://typefree.pro',
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'ru', 'es', 'de', 'fr', 'it', 'pt'],
